@@ -1,5 +1,5 @@
 <script>
-  import "../app.css";
+  import "../app.scss";
   import Navbar from "../lib/components/Navbar.svelte";
   import Footer from "../lib/components/Footer.svelte";
 </script>
@@ -11,7 +11,4 @@
 </div>
 
 <style lang="postcss">
-  :global(html) {
-    background-color: theme(colors.red.100);
-  }
 </style>
