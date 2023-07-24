@@ -9,6 +9,7 @@
       <a href="/search" aria-label="Restaurant Search"
         ><i class="gg-search" /></a
       >
+      <a href="/auth/signin">Sign In</a>
       <!-- <SlectTheme /> -->
     </div>
   </div>
