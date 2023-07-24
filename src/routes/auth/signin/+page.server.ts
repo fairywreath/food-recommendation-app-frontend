@@ -1,40 +1,23 @@
+import { redirect, fail } from "@sveltejs/kit";
+import { get } from "svelte/store";
+
 import type { Actions } from "./$types";
-
-// import z from "zod";
-// import { zfd } from "zod-form-data";
-// import { validateForm } from "$server";
-// import { search } from "$server";
-
-// const schema = zfd.formData({
-//   q: zfd.text(z.string().min(1, { message: "Search a required" }).max(50)),
-//   qType: zfd.text(
-//     z.enum(["artist", "album"], {
-//       invalid_type_error: "Select a type",
-//     })
-//   ),
-// });
+import { auth, isLoggedIn } from "$lib/store/auth";
 
 export const actions = {
-  default: async ({ fetch, request }) => {
-    // try {
-    //   /**
-    //    * Get data
-    //    */
-    //   const data = await request.formData();
-    //   /**
-    //    * Validate data
-    //    */
-    //   const validatedData = await validateForm(schema, data);
-    //   const response = await search(fetch, validatedData.data);
-    //   /**
-    //    * Return data
-    //    */
-    //   return response;
-    // } catch (error: any) {
-    //   /**
-    //    * Response error
-    //    */
-    //   return error;
-    // }
+  signIn: async ({ fetch, request, cookies }) => {
+    const data = await request.formData();
+    const email = data.get("email")?.toString();
+    if (typeof email == "undefined") {
+      return fail(400, { message: "Email is missing" });
+    }
+
+    cookies.set("email", email);
+    // auth.set({ email: email });
+    // isLoggedIn.set(true);
+    // console.log("Setting store....");
+    // console.log(get(isLoggedIn));
+    // console.log(get(auth).email);
+    throw redirect(303, "/");
   },
 } satisfies Actions;

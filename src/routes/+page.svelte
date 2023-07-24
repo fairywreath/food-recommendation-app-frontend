@@ -5,16 +5,14 @@
 </script>
 
 <div class="wrapper">
+  <h1>Today's Recommendations</h1>
   {#await main_recommendations}
     Loading recommendations...
-  {:then value}
-    {main_recommendations}
-    <!-- {#each main_recommendations.restaurants as restaurant} -->
-    <!-- <div>{restaurant.name}</div> -->
-    <!-- <div>{restaurant.address}</div> -->
-    <!-- <br /> -->
-    <!-- {/each} -->
-    <!-- {:catch} -->
-    <!-- {error.message} -->
+  {:then recommendations}
+    {#each recommendations.restaurants as restaurant}
+      <a href="restaurant/{restaurant.id}">{restaurant.name}</a>
+      <div>{restaurant.address}</div>
+      <br />
+    {/each}
   {/await}
 </div>

@@ -1,18 +1,16 @@
+import { get } from "svelte/store";
+
 import type { PageServerLoad } from "./$types";
 
 import { getAllRestaurants } from "$service/restaurant";
 
-export const load = (({ fetch }) => {
+import { auth, isLoggedIn } from "$lib/store/auth";
+
+export const load = (async ({ fetch }) => {
+  // console.log(get(auth).email);
+  // console.log(get(isLoggedIn));
+
   return {
-    // one: Promise.resolve(1),
-    // two: Promise.resolve(2),
-    // streamed: {
-    //   three: new Promise((fulfil) => {
-    //     setTimeout(() => {
-    //       fulfil(3);
-    //     }, 1000);
-    //   }),
-    // },
-    main_recommendtaions: getAllRestaurants(fetch),
+    main_recommendations: getAllRestaurants(fetch),
   };
 }) satisfies PageServerLoad;

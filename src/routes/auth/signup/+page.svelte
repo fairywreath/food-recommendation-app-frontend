@@ -1,39 +1,49 @@
 <script>
-  //   import { goto } from "$app/navigation";
+  import { enhance } from "$app/forms";
+  import { goto } from "$app/navigation";
+
   import Input from "$components/Input.svelte";
-  //   import { auth, isLoggedIn } from "$lib/utils/authStore";
+  import { auth, isLoggedIn } from "$lib/store/auth";
 
-  let email = "";
-  let password = "";
-  let name = "";
+  // Can also grab ActionData here and subscribe to the store variables
+  // export let form: ActionData;
 
-  function submit() {
-    // $auth = { name, email, password };
-    // $isLoggedIn = true;
-    // goto("/");
-  }
+  const onCreateUserSubmit = () => {
+    return ({ result, update }) => {
+      if (result.type === "success") {
+        console.log(result.data);
+        $isLoggedIn = true;
+        $auth.username = result.data.username;
+        $auth.email = result.data.email;
+        $auth.userId = result.id;
+        goto("/");
+      } else {
+        // XXX TODO: Update UI component
+      }
+    };
+  };
 </script>
 
 <svelte:head>
-  <title>Sign Up | Bibliophile</title>
+  <title>Sign Up</title>
 </svelte:head>
 
-<section class="signup wrapper">
+<section class="wrapper">
   <h1>Create a new account</h1>
-  <form on:submit|preventDefault={submit}>
+  <form method="POST" action="?/create" use:enhance={onCreateUserSubmit}>
     <div class="row">
-      <Input type="text" placeholder="" label="Username" bind:value={name} />
+      <Input type="text" placeholder="" label="Username" name="name" />
     </div>
     <div class="row">
-      <Input type="email" placeholder="" label="Email" bind:value={email} />
+      <Input type="email" placeholder="" label="Email" name="email" />
     </div>
     <div class="row">
       <Input
         placeholder="*******"
         type="password"
         label="Password"
-        bind:value={password}
         minlength="6"
+        name="password"
       />
     </div>
     <button>Create account</button>

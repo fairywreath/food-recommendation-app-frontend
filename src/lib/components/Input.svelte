@@ -8,6 +8,8 @@
   export let minlength = 0;
   export let autocomplete = "false";
 
+  export let name = "";
+
   function chooseIcon() {
     switch (type) {
       case "email":
@@ -42,5 +44,6 @@
     required
     {minlength}
     {autocomplete}
+    {name}
   />
 </div>

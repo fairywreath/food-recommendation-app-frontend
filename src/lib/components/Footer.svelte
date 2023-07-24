@@ -2,14 +2,14 @@
   <div
     class="container sm:flex text-center sm:text-left justify-between pb-8 pt-4"
   >
-    <div class="text-sm">
+    <!-- <div class="text-sm">
       <a
         href="https://kit.svelte.dev/"
         target="_blank"
         class="text-primary-light font-semibold">SvelteKit</a
       >
       App
-    </div>
+    </div> -->
 
     <div class="flex justify-center sm:justify-start mt-6 sm:mt-0 space-x-4">
       <a
