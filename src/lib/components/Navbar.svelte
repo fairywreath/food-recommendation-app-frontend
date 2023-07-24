@@ -5,6 +5,16 @@
       class="text-2xl font-extrabold tracking-tight ring-2 px-2 py-1 ring-black dark:ring-primary hover:ring-primary"
       >EatsRadar</a
     >
+    <a
+      href="/user/0"
+      class="text-2xl font-extrabold tracking-tight ring-2 px-2 py-1 ring-black dark:ring-primary hover:ring-primary"
+      >DumbUser</a
+    >
+    <a
+      href="/restaurant/0"
+      class="text-2xl font-extrabold tracking-tight ring-2 px-2 py-1 ring-black dark:ring-primary hover:ring-primary"
+      >DumbRestaurant</a
+    >
     <div class="flex items-center space-x-4 sm:space-x-6">
       <a href="/search" aria-label="Restaurant Search"
         ><i class="gg-search" /></a
